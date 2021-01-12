@@ -1,0 +1,28 @@
+{% extends "page/base.html"%}
+{% block content %}
+
+  <p class= "text-center">Comment for "{{post_title}}"</p>
+  <div>
+    <span class = "align-left">
+    <a href="{% url 'blog:post-detail' post_id%}" class = "btn btn-secondary btn-sm mt-1 mb-1">Back to Post</a>
+    </span>
+    <span class = "algin-right">
+      {% if user.is_authenticated %}
+        <a href="{% url 'blog:comment-create' post_id %}" class = "btn btn-secondary btn-sm mt-1 mb-1 ">New Comment</a>
+      {% endif %}
+    </span>
+  </div>
+  <article class="">
+    <div>
+      <img src="{{object.author.profile.image.url}}" alt="" class="rounded-circle">
+      <a href="#" class="mr-2">{{object.author}}</a>
+      <small class="text-muted">{{object.created_at | date:"F d, Y"}}</small>
+      <h2 class="">{{object.title}}</h2>
+      <p class="">{{object.content}}</p>
+      {% if user.is_authenticated and object.author == user %}
+        <a href="{% url 'blog:comment-update' object.id %}" class="btn btn-secondary btn-sm mt-1 mb-1">Update</a>
+        <a href="{% url 'blog:comment-delete' object.id %}" class="btn btn-secondary btn-sm mt-1 mb-1">Delete</a>
+      {% endif %}
+    </div>
+  </article>
+{% endblock content%}

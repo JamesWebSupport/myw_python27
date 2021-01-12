@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+
+    {% if title %}
+        <title>mywService - {{ title }}</title>
+    {% else %}
+        <title>mywService</title>
+    {% endif %}
+</head>
+
+<body>
+    <header class="">
+      <nav class="navbar navbar-expand-sm navbar-lg bg-lg justify-content-between">
+        <a href="{% url 'page-index'%}" class="navbar-brand"><img src="/media/logo.jpg" alt="site logo"></a>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="{% url 'page-index'%}" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'page-aboutMe'%}" class="nav-link">AboutMe</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'page-contactMe'%}" class="nav-link">ContactMe</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'blog:blog-home'%}" class="nav-link">Blog</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% if user.is_authenticated %}
+                <a href="{% url 'profile'%}" class="dropdown-item">Profile</a>
+                <a href="{% url 'logout'%}" class="dropdown-item">Logout</a>
+              {% else %}
+               <a href="{% url 'login'%}" class="dropdown-item">Login</a>
+                <a href="{% url 'register'%}" class="dropdown-item">Register</a>
+              {% endif %}
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container-fluid">
+	    <div >
+				<p class="text-center">My name is James Yan. Working as a real-estate photographer from 2015, I would like to shine your house with my perfectionism and experience.</p>
+				<p class="text-center">150 dollars per shooting</p>
+				<p class="text-center">20+ photos in/out</p>
+				<p class="text-center">Delivery in 24 hours</p>
+				<p class="text-center">Delivery by email</p>
+				<p class="text-center">Travel included up 50km</p>
+				<p class="text-center">On-Line gallery for one year</p>
+			</div>
+			<div class="row">
+
+				{% for photo in photos %}
+					<div class="col-sm-4 gallery">
+						<h6 >{{photo.title}}</h6>
+						<a href="{{ photo.get_absolute_url}}" ><img src="{{photo.image_sm.url}}" alt="" class ="" ></a>
+            <div class="text"></div>
+					</div>
+				{% endfor%}
+			</div>
+		</main>
+    <footer>
+      <pre>
+
+
+      </pre>
+      <div class="text-center">
+        <a href="https://www.facebook.com/fe.yan.5" class="" target="_blank"><img src="/media/facebook48.png"></a>
+        <a href="https://www.instagram.com/jamesjannymontreal/" class="" target="_blank"><img src="/media/instagram48.png"></a>
+        <a href="https://www.linkedin.com/in/fengyanwebmedia" class="" target="_blank"><img src="/media/linkedin48.png"></a>
+      </div>
+      <p class="text-center">Call me at 514-998-5123</p>
+      <p class="text-center">@copywrite 2019</p>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
