@@ -1,3 +1,4 @@
+Date: 2022-01-29
 After creating several websites for customers, I would like to build a website for myself.
 My website, www.mywService.com, stands for Yan media&web service. The website shows my favorite photos in each shooting mission and presents my web service skills. It contains several static pages and a Blog section with a user registration system.
 
@@ -19,7 +20,7 @@ Python is a general purpose and high level programming language.
 • Simplify complete software development
 • Adopt test driven development
 
-Choose Framework – Django
+Choose Framework – Django (which version ?)
 Django is best user-friendly web framework I have even used. The open-source frame-work is very popular because it's powerful for rapid development, pragmatic, maintainable, clean design. It also has great features to secure websites.
 • Easy to use
 • Operation system dependent
